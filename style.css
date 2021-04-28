@@ -27,5 +27,11 @@ html, body {
 .column {
     height: 100%;
     width: 50px;
-    background: rgb(4, 168, 233);
+    background: rgb(11, 155, 238);
+}
+
+.hover {
+    height: 100%;
+    width: 50px;
+    background: rgb(247, 133, 26);
 }
