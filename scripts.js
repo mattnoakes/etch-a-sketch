@@ -1,22 +1,41 @@
-//create a 16x16 grid of square divs
 const container = document.querySelector('#container');
 
-for (let i=0; i<16; i++) {
-    const row = document.createElement('div');
-    row.setAttribute('class', 'row');
-    container.appendChild(row);
-    
-    for (let e=0; e<16; e++) {
-        const column = document.createElement('div');
-        column.setAttribute('class', 'column');
-        row.appendChild(column);
+//button to make new grid
+const resetButton = document.createElement('button');
+container.appendChild(resetButton);
+resetButton.setAttribute('id', 'reset');
+resetButton.textContent = 'New Grid';
+resetButton.addEventListener('click', newGrid);
+createGrid(16, 16);
 
-        //hover effect
-        column.addEventListener('mouseover', () => {
-            column.setAttribute('class', 'hover');
-        });
-        // column.addEventListener('mouseout', () => {
-        //     column.setAttribute('class', 'column');
-        // });
+//new grid function
+function newGrid() {
+    container.removeChild(grid);
+    const x = prompt('How many rows do you want your grid to have?', '');
+    const y = prompt('How many columns do you want your grid to have?', '');
+    createGrid(x,y);
+}
+
+//create grid function
+function createGrid(x, y) {
+    const grid = document.createElement('div');
+    grid.setAttribute('id', 'grid');
+    container.appendChild(grid);
+
+    for (let i=0; i<x; i++) {
+        const row = document.createElement('div');
+        row.setAttribute('class', 'row');
+        grid.appendChild(row);
+        
+        for (let e=0; e<y; e++) {
+            const column = document.createElement('div');
+            column.setAttribute('class', 'column');
+            row.appendChild(column);
+    
+            //hover effect
+            column.addEventListener('mouseover', () => {
+                column.setAttribute('class', 'hover');
+            });
+        }
     }
 }

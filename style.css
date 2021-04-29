@@ -13,25 +13,42 @@ html, body {
     padding: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+}
+
+#reset {
+    max-height: 50px;
+    max-width: 115px;
+    margin: 10px;
+}
+
+#grid {
+    height: 90vh;
+    width: 90vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .row {
-    height: 50px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-grow: 1;
 }
 
 .column {
     height: 100%;
-    width: 50px;
+    border: .3px solid white;
     background: rgb(11, 155, 238);
+    flex-grow: 1;
 }
 
 .hover {
     height: 100%;
-    width: 50px;
+    border: .3px solid white;
     background: rgb(247, 133, 26);
+    flex-grow: 1;
 }
