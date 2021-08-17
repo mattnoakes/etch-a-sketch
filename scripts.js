@@ -8,11 +8,31 @@ resetButton.textContent = 'New Grid';
 resetButton.addEventListener('click', newGrid);
 createGrid(16, 16);
 
+//restrict input
+function restrictValue(input) {
+    if (input < 1) {
+        return 1;
+    }
+    else if (input > 100) {
+        return 100;
+    }
+    else if (isNaN(input)) {
+        return 16;
+    }
+    else {
+        return input;
+    }
+}
+
 //new grid function
 function newGrid() {
     container.removeChild(grid);
-    const x = prompt('How many rows do you want your grid to have?', '');
-    const y = prompt('How many columns do you want your grid to have?', '');
+    let x = prompt('How many rows do you want your grid to have? (max=100, min=1)', '');
+    x = Number(x);
+    x = restrictValue(x);
+    let y = prompt('How many columns do you want your grid to have? (max=100, min=1)', '');
+    y = Number(y);
+    y = restrictValue(y);
     createGrid(x,y);
 }
 
