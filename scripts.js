@@ -1,12 +1,37 @@
 const container = document.querySelector('#container');
+const blocks = document.getElementsByClassName('block');
 
-//button to make new grid
-const resetButton = document.createElement('button');
-container.appendChild(resetButton);
-resetButton.setAttribute('id', 'reset');
-resetButton.textContent = 'New Grid';
-resetButton.addEventListener('click', newGrid);
-createGrid(16, 16);
+//hover effect function
+function hover() {
+    for (let i = 0; i < blocks.length; i++) {
+        blocks[i].addEventListener('mouseenter', () => {
+            const color = randomColor();
+            blocks[i].style.background = color;
+        }, {once : true});
+    }
+}
+
+//create grid function
+function createGrid(x, y) {
+    const grid = document.createElement('div');
+    grid.setAttribute('id', 'grid');
+    container.appendChild(grid);
+
+    for (let i=0; i<x; i++) {
+        const row = document.createElement('div');
+        row.setAttribute('class', 'row');
+        grid.appendChild(row);
+        
+        for (let e=0; e<y; e++) {
+            const block = document.createElement('div');
+            block.setAttribute('class', 'block');
+            row.appendChild(block);
+            
+        }
+    }
+    
+    hover();
+}
 
 //restrict input
 function restrictValue(input) {
@@ -36,26 +61,10 @@ function newGrid() {
     createGrid(x,y);
 }
 
-//create grid function
-function createGrid(x, y) {
-    const grid = document.createElement('div');
-    grid.setAttribute('id', 'grid');
-    container.appendChild(grid);
-
-    for (let i=0; i<x; i++) {
-        const row = document.createElement('div');
-        row.setAttribute('class', 'row');
-        grid.appendChild(row);
-        
-        for (let e=0; e<y; e++) {
-            const column = document.createElement('div');
-            column.setAttribute('class', 'column');
-            row.appendChild(column);
-    
-            //hover effect
-            column.addEventListener('mouseover', () => {
-                column.setAttribute('class', 'hover');
-            });
-        }
-    }
-}
+//button to make new grid
+const resetButton = document.createElement('button');
+container.appendChild(resetButton);
+resetButton.setAttribute('id', 'reset');
+resetButton.textContent = 'New Grid';
+resetButton.addEventListener('click', newGrid);
+createGrid(16, 16);

@@ -39,16 +39,9 @@ html, body {
     flex-grow: 1;
 }
 
-.column {
+.block {
     height: 100%;
     border: .3px solid white;
-    background: rgb(11, 155, 238);
-    flex-grow: 1;
-}
-
-.hover {
-    height: 100%;
-    border: .3px solid white;
-    background: rgb(247, 133, 26);
+    background: black;
     flex-grow: 1;
 }
